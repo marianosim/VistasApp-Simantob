@@ -1,12 +1,27 @@
-import { View, Text } from "react-native";
+import React from 'react';
+import { FlatList, SafeAreaView } from 'react-native';
 
-import { styles } from "./styles";
+import { styles } from './styles';
+import { CategoryItem } from '../../components';
+import { CATEGORIES } from '../../constants';
 
-const Categories = () => {
+const Categories = ({ navigation }) => {
+  const onSelected = (item) => {
+    navigation.navigate('Products', {
+      categoryId: item.id,
+      name: item.name,
+      color: item.color,
+    });
+  };
+
+  const renderItem = ({ item }) => <CategoryItem item={item} onSelected={onSelected} />;
+
+  const keyExtractor = (item) => item.id.toString();
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Categories</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <FlatList data={CATEGORIES} renderItem={renderItem} keyExtractor={keyExtractor} />
+    </SafeAreaView>
   );
 };
 
