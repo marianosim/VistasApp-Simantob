@@ -1,6 +1,7 @@
 import { useFonts } from 'expo-font';
 import { View, ActivityIndicator } from 'react-native';
 
+import { Header } from './components';
 import AppNavigator from './navigation';
 import { styles } from './styles';
 
@@ -22,6 +23,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Header />
       <AppNavigator />
     </View>
   );
