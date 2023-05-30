@@ -1,5 +1,4 @@
 /* eslint-disable no-case-declarations */
-import { CART } from '../../constants';
 import { sumTotal } from '../../utils';
 import { cartTypes } from '../types';
 
@@ -27,6 +26,19 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         data: updatedCart,
         total: sumTotal(updatedCart),
+      };
+    case REMOVE_FROM_CART:
+      const filteredCart = state.data.filter((item) => item.id !== action.id);
+      return {
+        ...state,
+        data: filteredCart,
+        total: sumTotal(filteredCart),
+      };
+    case CONFIRM_ORDER:
+      return {
+        ...state,
+        data: [],
+        total: 0,
       };
     default:
       return state;
