@@ -1,5 +1,4 @@
 /* eslint-disable no-case-declarations */
-//import { CategoryItem } from '../../components';
 import { CATEGORIES } from '../../constants/data/categories';
 import { categoriesTypes } from '../types';
 
